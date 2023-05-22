@@ -11,7 +11,7 @@ services:
         volumes:
             - ./:/var/www
         depends_on:
-            - redis
+            - mysql
         networks:
             - laravel
 
@@ -20,7 +20,7 @@ services:
         image: nginx:alpine
         restart: unless-stopped
         ports:
-            - "8989:80"
+            - "7087:80"
         volumes:
             - ./:/var/www
             - ./docker/nginx/:/etc/nginx/conf.d/
@@ -28,7 +28,7 @@ services:
             - laravel
 
     # db mysql
-    db:
+    mysql:
         image: mysql:5.7.22
         platform: linux/x86_64
         restart: unless-stopped
@@ -44,22 +44,17 @@ services:
         networks:
             - laravel
 
-    # queue
-    queue:
-        image: especializati/laravel9-app
-        restart: unless-stopped
-        command: "php artisan queue:work"
-        volumes:
-            - ./:/var/www
+    # phpMyAdmin
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        restart: always
+        ports:
+            - "8080:80"
+        environment:
+            PMA_HOST: mysql
+            MYSQL_ROOT_PASSWORD: root
         depends_on:
-            - redis
-            - app
-        networks:
-            - laravel
-
-    # redis
-    redis:
-        image: redis:latest
+            - mysql
         networks:
             - laravel
 
