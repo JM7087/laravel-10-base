@@ -49,6 +49,13 @@ docker-compose exec app bash
 Instale as dependências do projeto
 ```sh
 composer install
+
+composer require laravel/ui
+
+npm install --save vue@next && npm install --save-dev vue-loader@next
+
+npm install && npm run dev
+
 ```
 
 

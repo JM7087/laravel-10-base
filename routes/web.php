@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\{SupportController};
 use App\Http\Controllers\Site\SiteController;
+use App\Http\Controllers\TesteVueController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -22,6 +23,9 @@ Route::get('somar/{n1}/{n2}', function ($n1, $n2) {
 Route::get('somarV2/{n1}/{n2}', function ($n1, $n2) {
     return $n1 + $n2;
 });
+
+Route::get('/testeVue', [TesteVueController::class, 'view']);
+
 
 
 Route::delete('supports/{id}', [SupportController::class, 'destroy'])->name('supports.destroy');
