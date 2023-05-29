@@ -14,7 +14,7 @@ class TesteVueController extends Controller
     
         $teste = 'olha mundo';
 
-        Log::debug("emtrou");
+        // Log::debug("emtrou");
 
         return view('teste_Vue', ['teste' => $teste]);
     }

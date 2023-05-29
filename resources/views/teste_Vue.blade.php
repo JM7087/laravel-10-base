@@ -1,13 +1,9 @@
-{{-- @extends('layouts.app') --}}
-
-@section('title', 'Teste Vue')
-
-@section('content')
+<body>
+    {{-- Elemento HTML para montar a aplicação Vue --}}
     <div id="app">
+        {{-- Componente Vue --}}
         <teste-vue-componente :teste_props="{{ json_encode($teste) }}"></teste-vue-componente>
     </div>
-@endsection
-
-@push('scripts')
+    {{-- Incluindo o arquivo app.js --}}
     <script src="{{ asset('js/app.js') }}"></script>
-@endpush
+</body>
